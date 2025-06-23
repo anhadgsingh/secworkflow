@@ -14,11 +14,11 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
       - name: Install scanner tools
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y clamav
-          sudo freshclam
-          pip install fickling
+          run:|
+            sudo apt-get update
+            sudo apt-get install -y clamav
+            sudo freshclam --stdout
+            pip install fickling
       - name: Find model files
         run: |
           find . \( -name "*.pkl" -o -name "*.pt" -o -name "*.pth" -o -name "*.h5" -o -name "*.ckpt" -o -name "*.pb" -o -name "*.onnx" -o -name "*.safetensors" -o -name "*.joblib" \) > model_files.txt
